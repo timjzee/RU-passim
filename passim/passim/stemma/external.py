@@ -7,7 +7,7 @@ import tempfile
 import os
 from ctypes import *
 
-from passim.settings import MEDIA_ROOT
+from passim.settings import MEDIA_ROOT, STEMMAC_DIR
 from passim.utils import ErrHandle
 from passim.stemma.convert import ps2svg_string, ps2svg_simple
 
@@ -89,7 +89,7 @@ def myfitch(distNames, distMatrix):
         if platform.system() == "Windows":
             sLibrary = "d:/data files/vs2010/projects/RU-passim/stemmac/fitch.dll"
         else:
-            sLibrary = "/var/www/passim/live/repo/stemmac/bin/fitch.so"
+            sLibrary = STEMMAC_DIR + "fitch.so"
         do_fitch = cdll.LoadLibrary(sLibrary).do_fitch
         do_fitch.restype = c_bool  # C-type boolean
         do_fitch.argtypes = [POINTER(c_char),POINTER(c_char),POINTER(c_char)]
@@ -149,7 +149,7 @@ def mydrawtree(sTree):
         if platform.system() == "Windows":
             sLibrary = "d:/data files/vs2010/projects/RU-passim/stemmac/drawtree.dll"
         else:
-            sLibrary = "/var/www/passim/live/repo/stemmac/bin/drawtree.so"
+            sLibrary = STEMMAC_DIR + "drawtree.so"
         psdrawtree = cdll.LoadLibrary(sLibrary).psdrawtree
         psdrawtree.restype = c_bool  # C-type boolean
         psdrawtree.argtypes = [POINTER(c_char),POINTER(c_char),POINTER(c_char)]
