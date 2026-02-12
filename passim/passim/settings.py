@@ -24,6 +24,7 @@ bUseTunnel = False
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_NAME = os.path.basename(BASE_DIR)
 WRITABLE_DIR = os.path.abspath(os.path.join(BASE_DIR, "../../writable/database/"))
+STEMMAC_DIR = os.path.abspath(os.path.join(BASE_DIR, "../stemmac/bin/"))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -40,6 +41,7 @@ elif "/applejack" in BASE_DIR:
 if "/var/writable" in WRITABLE_DIR:
     WRITABLE_DIR = os.path.abspath(os.path.join(BASE_DIR, "../writable/database/"))
     PROJECT_NAME = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
+    STEMMAC_DIR = os.path.abspath(os.path.join(BASE_DIR, "stemmac/bin/"))
 
 MEDIA_DIR = os.path.abspath(os.path.join(WRITABLE_DIR, "../media/"))
 MEDIA_ROOT = os.path.abspath(os.path.join(WRITABLE_DIR, "../media/"))
