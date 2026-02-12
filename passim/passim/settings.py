@@ -36,6 +36,11 @@ if "RU-passim\\writable" in WRITABLE_DIR:
 elif "/applejack" in BASE_DIR:
     WRITABLE_DIR = os.path.abspath(os.path.join(BASE_DIR, "../../writable/passim/database/"))
 
+# Containerized Radboud Environment
+if "/var/writable" in WRITABLE_DIR:
+    WRITABLE_DIR = os.path.abspath(os.path.join(BASE_DIR, "../writable/database/"))
+    PROJECT_NAME = os.path.basename(os.path.dirname(os.path.abspath(__file__)))
+
 MEDIA_DIR = os.path.abspath(os.path.join(WRITABLE_DIR, "../media/"))
 MEDIA_ROOT = os.path.abspath(os.path.join(WRITABLE_DIR, "../media/"))
 
@@ -95,7 +100,7 @@ BLOCKED_IPS = ['40.77.167.57',      '161.35.188.242',
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '561c5400-4ebf-4e45-a2ec-12d856638e45'
 
-ALLOWED_HOSTS = ['localhost', 'applejack.science.ru.nl', 'passim.rich.ru.nl', 'testserver', '131.174.114.236' ]
+ALLOWED_HOSTS = ['localhost', 'applejack.science.ru.nl', 'passim.rich.ru.nl', 'testserver', '131.174.114.236', 'dev.passim.rich.ru.nl' ]
 
 # For django-plotly-dash:
 X_FRAME_OPTIONS = 'SAMEORIGIN'
